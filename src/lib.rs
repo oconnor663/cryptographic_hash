@@ -205,6 +205,7 @@ impl fmt::Display for HexError {
 #[cfg(feature = "std")]
 impl std::error::Error for HexError {}
 
+#[cfg(feature = "serde")]
 impl<const N: usize> serde::Serialize for Hash<N>
 where
     ArrayString<{ 2 * N }>: Sized,
@@ -221,8 +222,10 @@ where
     }
 }
 
+#[cfg(feature = "serde")]
 struct HashVisitor<const N: usize>;
 
+#[cfg(feature = "serde")]
 impl<'de, const N: usize> serde::de::Visitor<'de> for HashVisitor<N> {
     type Value = Hash<N>;
 
@@ -267,6 +270,7 @@ impl<'de, const N: usize> serde::de::Visitor<'de> for HashVisitor<N> {
     }
 }
 
+#[cfg(feature = "serde")]
 impl<'de, const N: usize> serde::Deserialize<'de> for Hash<N> {
     fn deserialize<D>(deserializer: D) -> Result<Hash<N>, D::Error>
     where

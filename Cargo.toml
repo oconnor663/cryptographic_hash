@@ -10,4 +10,4 @@ serde = { version = "1.0.158", default-features = false, optional = true }
 
 [features]
 default = ["std"]
-std = ["serde/std"]
+std = []
