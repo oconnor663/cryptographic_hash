@@ -1,0 +1,13 @@
+[package]
+name = "cryptographic_hash"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+arrayvec = { version = "0.7.2", default-features = false }
+constant_time_eq = "0.2.5"
+serde = { version = "1.0.158", default-features = false, optional = true }
+
+[features]
+default = ["std"]
+std = ["serde/std"]
